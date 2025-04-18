@@ -84,7 +84,8 @@ const Dashboard = () => {
       <Card>
         <CardContent>
           <h2 className="text-xl font-bold mb-2">Bitcoin Price (GBP)</h2>
-          {loading ? <p>Loading...</p> : <p>£{data.bitcoin.toLocaleString()}</p>}
+          {loading ? <p>Loading...</p> : <p>
+  £{data?.bitcoin != null ? data.bitcoin.toLocaleString() : "N/A"}</p>}
         </CardContent>
       </Card>
       <Card>
