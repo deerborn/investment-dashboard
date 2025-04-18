@@ -26,3 +26,20 @@ export default function Home() {
           </CardContent>
         </Card>
 
+        <Card>
+          <CardContent>
+            <h2 className="text-xl font-bold mb-2">MSTR Price (GBP)</h2>
+            <p>
+              {loading
+                ? "Loading..."
+                : data?.mstr != null
+                ? `£${data.mstr.toLocaleString()}`
+                : "N/A"}
+            </p>
+          </CardContent>
+        </Card>
+      </div>
+    </main>
+  );
+}
+
