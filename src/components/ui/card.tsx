@@ -1,15 +1,19 @@
-// src/components/ui/card.tsx
 import React from "react";
+import { cn } from "@/lib/utils"; // if you're using a className merge helper
 
-export function Card({ children }: { children: React.ReactNode }) {
+interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
+  children: React.ReactNode;
+}
+
+export function Card({ children, className, ...props }: CardProps) {
   return (
-    <div style={{ border: "1px solid #ccc", borderRadius: "8px", padding: "1rem" }}>
+    <div className={cn("rounded-2xl shadow p-4 bg-white", className)} {...props}>
       {children}
     </div>
   );
 }
 
 export function CardContent({ children }: { children: React.ReactNode }) {
-  return <div>{children}</div>;
+  return <div className="mt-2">{children}</div>;
 }
 
