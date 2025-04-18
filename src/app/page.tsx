@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
-import { Line } from "react-chartjs-2";
+import { Line as _Line } from "react-chartjs-2";
 import "chart.js/auto";
 
 const Dashboard = () => {
