@@ -4,9 +4,10 @@ import React, { useEffect, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Line } from "react-chartjs-2";
 import "chart.js/auto";
+import type { ChartData } from "chart.js"; // ✅ Add this import
 
 const PortfolioGrowthChart = () => {
-  const [chartData, setChartData] = useState({
+  const [chartData, setChartData] = useState<ChartData<"line">>({
     labels: [], // Dates
     datasets: [
       {
