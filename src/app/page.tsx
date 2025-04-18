@@ -1,9 +1,52 @@
-"use client"
+"use client";
 
 import React, { useEffect, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
-import { Line as _Line } from "react-chartjs-2";
+import { Line } from "react-chartjs-2";
 import "chart.js/auto";
+
+const PortfolioGrowthChart = () => {
+  const [chartData, setChartData] = useState({
+    labels: [], // Dates
+    datasets: [
+      {
+        label: "Portfolio Value (£)",
+        data: [],
+        fill: false,
+        borderColor: "#3b82f6",
+        tension: 0.1,
+      },
+    ],
+  });
+
+  useEffect(() => {
+    // Fake data for now — you can connect this to real portfolio history
+    const sampleDates = ["2024-11", "2024-12", "2025-01", "2025-02", "2025-03", "2025-04"];
+    const sampleValues = [1000, 1200, 1500, 1700, 1600, 1850];
+
+    setChartData({
+      labels: sampleDates,
+      datasets: [
+        {
+          label: "Portfolio Value (£)",
+          data: sampleValues,
+          fill: false,
+          borderColor: "#3b82f6",
+          tension: 0.3,
+        },
+      ],
+    });
+  }, []);
+
+  return (
+    <Card className="col-span-1 md:col-span-2">
+      <CardContent>
+        <h2 className="text-xl font-bold mb-4">Portfolio Growth Over Time</h2>
+        <Line data={chartData} />
+      </CardContent>
+    </Card>
+  );
+};
 
 const Dashboard = () => {
   const [data, setData] = useState({ bitcoin: null, mstr: null });
@@ -49,6 +92,9 @@ const Dashboard = () => {
           {loading ? <p>Loading...</p> : <p>${data.mstr.toLocaleString()}</p>}
         </CardContent>
       </Card>
+
+      {/* 📈 Portfolio Chart */}
+      <PortfolioGrowthChart />
     </div>
   );
 };
